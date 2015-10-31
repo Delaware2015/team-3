@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -32,7 +33,6 @@ public class Login extends Screen {
 
     public final void initUI() {
     	//getContentPane().setLayout(new FlowLayout());
-        setLocationRelativeTo(null);
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(Main.WIDTH, 400));
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -105,8 +105,6 @@ public class Login extends Screen {
     
 
 
-        setSize(400, 600);
-        setLocationRelativeTo(null);
     
 
         setTitle("Login");
@@ -117,8 +115,10 @@ public class Login extends Screen {
             public void actionPerformed(ActionEvent event) {
                 Main.username = usernameinput.getText();
                 Main.password = passwordinput.getText();
-           
-                switchto(new MilestoneFrame());
+                DashBoard newscreen = new DashBoard();
+                switchto(newscreen);
+                
+             
             }
         });
 

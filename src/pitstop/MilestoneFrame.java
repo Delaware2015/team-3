@@ -29,10 +29,13 @@ public class MilestoneFrame extends Screen {
         
         JPanel navi1 = new JPanel();
         JPanel navi2 = new JPanel();
-        navi1.add(new JButton("Profile"));
+        JButton profile = new JButton("Profile");
+        JButton colleges = new JButton("Colleges");
+        navi1.add(profile);
+        navi1.add(new JButton("Forums"));
         navi2.add(new JButton("Calander"));
         navi2.add(new JButton("Milestones"));
-        navi2.add(new JButton("Colleges"));
+        navi2.add(colleges);
      
         
         background.add(panel);
@@ -42,6 +45,34 @@ public class MilestoneFrame extends Screen {
         space.setPreferredSize(new Dimension(Main.WIDTH,20));
         background.add(space);
         this.getContentPane().add(background);
+        
+        
+        
+        profile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+         
+                DashBoard newscreen = new DashBoard();
+                switchto(newscreen);
+                
+             
+            }
+        });
+        
+        colleges.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+         
+            	CollegeFinder newscreen = new CollegeFinder();
+                switchto(newscreen);
+                System.out.println("Test");
+             
+            }
+        });
+        
+        
+        
+        
     }
     public static void addComponentsToPane(Container pane) {
         if (RIGHT_TO_LEFT) {
@@ -177,8 +208,5 @@ public class MilestoneFrame extends Screen {
         frame.setVisible(true);
     }
     
-    public static void main(String[] args) {
-    	MilestoneFrame f = new MilestoneFrame();
-    	f.setVisible(true);
-    }
+    
 }

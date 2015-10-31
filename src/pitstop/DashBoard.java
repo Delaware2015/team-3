@@ -1,6 +1,8 @@
 package pitstop;
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -29,7 +31,7 @@ public class DashBoard extends Screen {
 
 		
 	//constructor
-	public DashBoard() {
+	public DashBoard()  {
 		super();
 		
 		backgroundp = new JPanel();
@@ -41,9 +43,18 @@ public class DashBoard extends Screen {
 
     	topp.setLayout(new BoxLayout(topp,BoxLayout.X_AXIS));
     	picturep = new JPanel();
-    	JButton image = new JButton("picture here");
-    	image.setPreferredSize(new Dimension(150,150));
-    	picturep.add(image);
+    	BufferedImage image = null;
+		try {
+			image = ImageIO.read(new File("/home/aszos/pitstop/src/pitstop/Batman.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	Image profilepic =  image.getScaledInstance(150, 150, 0);
+    			
+    	JLabel picLabel = new JLabel(new ImageIcon(profilepic));
+    	picLabel.setPreferredSize(new Dimension(150,150));
+    	picturep.add(picLabel);
     	infop = new JPanel();
     	
     	genInfo(infop);
@@ -52,14 +63,35 @@ public class DashBoard extends Screen {
 
     	topp.add(picturep);
     	topp.add(infop);
-
     	bottomp = new JPanel();
 		bottomp.setBorder(BorderFactory.createLineBorder(Color.black));
     	bottomp.setLayout(new BoxLayout(bottomp,BoxLayout.Y_AXIS));   	
-    	bottomp.setPreferredSize(new Dimension(800, 400));
+    	bottomp.setPreferredSize(new Dimension(400, 400));
+
+    	JPanel news = new JPanel();
+    	genNewsFeed(news);
+    	/////////////
+    	bottomp.add(news);
+    
+        JPanel navi1 = new JPanel();
+        JPanel navi2 = new JPanel();
+        JButton Milestones = new JButton("Milestones");
+        JButton Colleges = new JButton("Colleges");
+        navi1.add(new JButton("Profile"));
+        navi1.add(new JButton("Calander"));
+        navi2.add(new JButton("Forums"));
+        navi2.add(Milestones);
+        navi2.add(Colleges);
+        
+       
+
     	
+    	JPanel pane = new JPanel();
+    	 pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS)); 
+    	 pane.add(navi1);
+    	 pane.add(navi2);
+    	 bottomp.add(pane);
     	
-    	genNewsFeed(bottomp);
 
     	backgroundp.add(topp);
     	backgroundp.add(bottomp);
@@ -69,6 +101,31 @@ public class DashBoard extends Screen {
         
         contentPane.add(backgroundp);
 		//initialize();
+        
+       
+        Milestones.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+         
+            	MilestoneFrame newscreen = new MilestoneFrame();
+                switchto(newscreen);
+                System.out.println("Test");
+             
+            }
+        });
+        
+        Colleges.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+         
+            	CollegeFinder newscreen = new CollegeFinder();
+                switchto(newscreen);
+                System.out.println("Test");
+             
+            }
+        });
+        
+        
 	}
 	
 	//initializes all methods
@@ -140,6 +197,7 @@ public class DashBoard extends Screen {
         pane.add(label, c);                
         
     }
+	/**
 	private static void removeListeners(JCheckBox checkbox) {
 	    	MouseListener[] m1 = (MouseListener[])checkbox.getListeners(MouseListener.class);
 	    	for(int i = 0; i<m1.length; i++)
@@ -148,7 +206,7 @@ public class DashBoard extends Screen {
 	    	im.put(KeyStroke.getKeyStroke("SPACE"), "none");
 	    	im.put(KeyStroke.getKeyStroke("released SPACE"), "none");
 	}
-	
+	**/
 	//makes the screen with background panel, then other panels layered
 	public void MakeScreen(){
 	//jpanel 
@@ -189,20 +247,30 @@ public class DashBoard extends Screen {
     	
     	
     	
-    JButton test = new JButton("Milestones");   
-        bottom.add(test);
+    JButton Milestones = new JButton("Milestones");   
+    
+    
+        bottom.add(Milestones);
         bottom.add(new JButton("College Finder"));
         bottom.add(new JButton("Calendar"));
         bottom.setVisible(false);
+        
+        
+       
     	Panel.add(bottom);
-    Container contentPane = getContentPane();
+    	Container contentPane = getContentPane();
         contentPane.add(Panel);
+       
+      
+        
+        
 	} 
+	
+	
+	
+	
+	
+	
 
-	public static void main(String args[]){
-		Main.username = "Shane O'Neill";
-		DashBoard d = new DashBoard();
-		d.setVisible(true);
-		
-	}
+	
 }
