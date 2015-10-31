@@ -1,10 +1,26 @@
 package pitstop;
 
 
-import javax.swing.*;
+import java.awt.ComponentOrientation;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.BoxLayout;
+import javax.swing.InputMap;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+
+import buttons.CollegeFinderButton;
 
 public class MilestoneFrame extends Screen {
 	final static boolean shouldFill = true;
@@ -30,7 +46,7 @@ public class MilestoneFrame extends Screen {
         JPanel navi1 = new JPanel();
         JPanel navi2 = new JPanel();
         JButton profile = new JButton("Profile");
-        JButton colleges = new JButton("Colleges");
+        JButton colleges = new CollegeFinderButton("Colleges");
         navi1.add(profile);
         navi1.add(new JButton("Forums"));
         navi2.add(new JButton("Calander"));

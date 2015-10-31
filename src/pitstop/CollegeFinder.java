@@ -1,18 +1,19 @@
 package pitstop;
 
-import java.awt.*;
-import javax.swing.*;
-
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.util.HashMap;
 
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
-import javax.swing.text.StyledDocument;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import buttons.CollegeFinderButton;
 
 
 public class CollegeFinder extends Screen{
@@ -86,7 +87,7 @@ public class CollegeFinder extends Screen{
         JPanel navi1 = new JPanel();
         JPanel navi2 = new JPanel();
         JButton Milestones = new JButton("Milestones");
-        JButton Colleges = new JButton("Colleges");
+        JButton Colleges = new CollegeFinderButton("Colleges");
         JButton Profile = new JButton("Profile");
         navi1.add(Profile);
         navi1.add(new JButton("Calander"));
