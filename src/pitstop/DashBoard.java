@@ -34,9 +34,18 @@ public class DashBoard extends Screen {
     	image.setPreferredSize(new Dimension(175,175));
     	picturep.add(image);
     	infop = new JPanel();
+    	
     	JLabel inf = new JLabel();
-    	inf.setPreferredSize(new Dimension(200,200));
+        inf.setFont(new Font(inf.getFont().getName(), Font.PLAIN,20));    
+    	inf.setText("Name: ");
+    	JLabel inf2 = new JLabel();
+        inf2.setFont(new Font(inf2.getFont().getName(), Font.BOLD, 20));        
+    	inf2.setText("  " + Main.username);
+
+    	//inf.setPreferredSize(new Dimension(200,200));
     	infop.add(inf);
+    	infop.add(inf2);
+
 
     	topp.add(picturep);
     	topp.add(infop);
@@ -113,6 +122,7 @@ public class DashBoard extends Screen {
 	} 
 
 	public static void main(String args[]){
+		Main.username = "Shane O'Neill";
 		DashBoard d = new DashBoard();
 		d.setVisible(true);
 		
