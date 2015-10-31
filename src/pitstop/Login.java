@@ -1,47 +1,96 @@
 package pitstop;
 
-//A program to demonstrate the use of JTextFields's
-//Import Statements
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTree;
+import javax.swing.SwingUtilities;
+import javax.swing.JTextField;
+
 
 public class Login extends Screen {
+	private String space = "                      ";
+	private static String username;
+	private static String password;
+    public Login() {
 
-	//Class Declarations
-	JTextField jtfText1;
-	String disp = "";
-	TextHandler handler = null;
-	//Constructor
-	public Login() {
-		super();
-		Container container = getContentPane();
-		container.setLayout(new FlowLayout());
-		jtfText1 = new JTextField(10);
-		
-		
-		container.add(jtfText1);
-		
-		handler = new TextHandler();
-		jtfText1.addActionListener(handler);
-		
-		setSize(400, 600);
-		setVisible(false);
-	}
-	//Inner Class TextHandler
-	private class TextHandler implements ActionListener {
+        initUI();
+    }
 
-		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == jtfText1) {
-				disp = "text1 : " + e.getActionCommand();
-				switchto(new MainFrame());
-			} 
-			JOptionPane.showMessageDialog(null, disp);
-		}
-	}
-	//Main Program that starts Execution
-	//public static void main(String args[]) {
-	//	Login test = new Login();
-	//	test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//}
-}// End of class TextFieldTest
+    public final void initUI() {
+    	getContentPane().setLayout(new FlowLayout());
+        setLocationRelativeTo(null);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+      
+       
+        
+       
+       
+        
+        JLabel username = new JLabel();
+        username.setText("UserName");
+      
+        
+        JLabel password = new JLabel();
+        password.setText("PassWord");
+        
+        final JTextField usernameinput = new JTextField(space);
+        final JTextField passwordinput = new JTextField(space);
+        
+        JButton EnterButton = new JButton("Enter");
+        EnterButton.setAlignmentX(CENTER_ALIGNMENT);
+        EnterButton.setAlignmentY(CENTER_ALIGNMENT);
+      
+        
+        
+        panel.add(username);
+        panel.add(usernameinput);
+        panel.add(password);
+        panel.add(passwordinput);
+        panel.add(EnterButton);
+        
+        Container contentPane = getContentPane();
+      
+        contentPane.add(panel, BorderLayout.CENTER);
+        
+       
+      
+        
+       
+        
+    
+
+
+      
+    
+
+        setTitle("Login");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        EnterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                String username = usernameinput.getText();
+                String password = passwordinput.getText();
+                System.out.println(username);
+                System.out.println(password);
+            }
+        });
+
+       
+    }
+
+    }
