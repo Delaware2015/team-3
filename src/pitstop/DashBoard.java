@@ -45,7 +45,7 @@ public class DashBoard extends Screen {
     	picturep = new JPanel();
     	BufferedImage image = null;
 		try {
-			image = ImageIO.read(new File("/home/aszos/pitstop/src/pitstop/Batman.jpg"));
+			image = ImageIO.read(new File("src/pitstop/Batman.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
