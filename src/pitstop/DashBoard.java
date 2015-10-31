@@ -26,7 +26,9 @@ import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import buttons.CalendarButton;
 import buttons.CollegeFinderButton;
+import buttons.MileStoneButton;
 
 public class DashBoard extends Screen {
 		
@@ -89,10 +91,10 @@ public class DashBoard extends Screen {
     
         JPanel navi1 = new JPanel();
         JPanel navi2 = new JPanel();
-        JButton Milestones = new JButton("Milestones");
+        JButton Milestones = new MileStoneButton("Milestones");
         JButton Colleges = new CollegeFinderButton("Colleges");
         navi1.add(new JButton("Profile"));
-        navi1.add(new JButton("Calander"));
+        navi1.add(new CalendarButton("Calander"));
         navi2.add(new JButton("Forums"));
         navi2.add(Milestones);
         navi2.add(Colleges);
