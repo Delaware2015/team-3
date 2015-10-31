@@ -2,14 +2,15 @@ package pitstop;
 
 
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -17,10 +18,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTextArea;
-import javax.swing.JTree;
-import javax.swing.SwingUtilities;
 import javax.swing.JTextField;
+
+import buttons.CollegeFinderButton;
 
 
 public class Login extends Screen {
@@ -90,7 +90,7 @@ public class Login extends Screen {
         JButton test = new JButton("Milestones");
         
         bottom.add(test);
-        bottom.add(new JButton("College Finder"));
+        bottom.add(new CollegeFinderButton("College Finder"));
         bottom.add(new JButton("Calendar"));
         bottom.setVisible(false);
         

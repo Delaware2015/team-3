@@ -1,18 +1,32 @@
 package pitstop;
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.event.AncestorEvent;
-import javax.swing.event.AncestorListener;
-
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import buttons.CollegeFinderButton;
 
 public class DashBoard extends Screen {
 		
@@ -76,7 +90,7 @@ public class DashBoard extends Screen {
         JPanel navi1 = new JPanel();
         JPanel navi2 = new JPanel();
         JButton Milestones = new JButton("Milestones");
-        JButton Colleges = new JButton("Colleges");
+        JButton Colleges = new CollegeFinderButton("Colleges");
         navi1.add(new JButton("Profile"));
         navi1.add(new JButton("Calander"));
         navi2.add(new JButton("Forums"));
