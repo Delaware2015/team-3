@@ -190,7 +190,7 @@ public class DashBoard extends Screen {
         c.gridy = 1;
         pane.add(label, c);
                 
-        label = new JLabel("Soon ... \t University of Delaware application due");
+        label = new JLabel("Soon ... \t University of Delaware App");
         label.setFont(new Font(label.getFont().getName(), Font.PLAIN, FONT_SIZE3));        
         c.gridx = 0;
         c.gridy = 2;
