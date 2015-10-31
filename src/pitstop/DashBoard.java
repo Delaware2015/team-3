@@ -9,15 +9,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class DashBoard extends Screen {
-	
-	
-	//constant panels for scrolling text
-		JTextArea Text = new JTextArea(400,200);
-		JScrollPane scrollFrame = new JScrollPane(Text);
 		
 		
 	//constructor
@@ -29,7 +25,6 @@ public class DashBoard extends Screen {
 	
 	//initializes all methods
 	public void initialize(){
-		scrollFrame.setPreferredSize(new Dimension(400,200));
 		MakeScreen();
 		
 	}
@@ -39,19 +34,51 @@ public class DashBoard extends Screen {
 	//makes the screen with background panel, then other panels layered
 	public void MakeScreen(){
 	//jpanel 
-	JPanel Background = new JPanel();
-	Background.setBackground(Color.RED);
-	Background.setLayout(new BoxLayout(Background, BoxLayout.Y_AXIS));
-	Background.add(scrollFrame);
-	//container and placement
-	getContentPane().setLayout(new FlowLayout());
-	Container contentPane = getContentPane();
-    contentPane.add("TimeLine", Background);
-    //picture attempt
+	JPanel Panel = new JPanel();
+		setLocationRelativeTo(null);
+    	Panel.setPreferredSize(new Dimension(Main.WIDTH, 400));
+    	Panel.setLayout(new BoxLayout(Panel, BoxLayout.Y_AXIS));
+    
+	
+    //constant panels for scrolling text
+	JTextArea Text = new JTextArea();
+	JScrollPane scrollFrame = new JScrollPane(Text);
+		scrollFrame.setPreferredSize(new Dimension(400,400));
+	
+    //more panels
+    JPanel spacer1 = new JPanel();
+    	spacer1.setPreferredSize(new Dimension(400,200));
+    JPanel spacer2 = new JPanel();
+    	spacer2.setPreferredSize(new Dimension(400,200));
+    	spacer2.setBackground(Color.RED);
+    
+   
+	//picture attempt
     ImageIcon image = new ImageIcon("Pitstop/src/pitstop.images/Batman.jpg");
-    JLabel label = new JLabel("Profile", image, JLabel.CENTER);
-    JPanel panel = new JPanel(new BorderLayout());
-    panel.add( label, BorderLayout.CENTER );
+    JLabel label = new JLabel("Profile", image, JLabel.LEFT);
+    JPanel IPanel = new JPanel(new BorderLayout());
+    	IPanel.add( label, BorderLayout.CENTER );
+    	IPanel.setPreferredSize(new Dimension(400,200));
+    
+    //Assign placements to panels
+    	Panel.add(IPanel);
+    	Panel.add(scrollFrame);
+    	Panel.add(spacer2);
+    
+    //uneditable bottom nav section
+    final JPanel bottom = new JPanel();
+    	bottom.setLayout(new FlowLayout());
+    	
+    	
+    	
+    JButton test = new JButton("Milestones");   
+        bottom.add(test);
+        bottom.add(new JButton("College Finder"));
+        bottom.add(new JButton("Calendar"));
+        bottom.setVisible(false);
+    	Panel.add(bottom);
+    Container contentPane = getContentPane();
+        contentPane.add(Panel);
 	} 
 
 }
