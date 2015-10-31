@@ -1,5 +1,6 @@
 package pitstop;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -18,6 +19,14 @@ public class DashBoard extends Screen {
 	JPanel bottomp;
 	JPanel topp;
 	JPanel picturep;
+	final static boolean shouldFill = true;
+    final static boolean shouldWeightX = true;
+    final static boolean RIGHT_TO_LEFT = false;
+    
+    final static int FONT_SIZE1 = 20;
+    final static int FONT_SIZE2 = 20;
+    final static int FONT_SIZE3 = 20;
+
 		
 	//constructor
 	public DashBoard() {
@@ -28,34 +37,33 @@ public class DashBoard extends Screen {
     		
     	//top half
     	topp = new JPanel();
+		topp.setBorder(BorderFactory.createLineBorder(Color.black));
+
     	topp.setLayout(new BoxLayout(topp,BoxLayout.X_AXIS));
     	picturep = new JPanel();
     	JButton image = new JButton("picture here");
-    	image.setPreferredSize(new Dimension(175,175));
+    	image.setPreferredSize(new Dimension(150,150));
     	picturep.add(image);
     	infop = new JPanel();
     	
-    	JLabel inf = new JLabel();
-        inf.setFont(new Font(inf.getFont().getName(), Font.PLAIN,20));    
-    	inf.setText("Name: ");
-    	JLabel inf2 = new JLabel();
-        inf2.setFont(new Font(inf2.getFont().getName(), Font.BOLD, 20));        
-    	inf2.setText("  " + Main.username);
+    	genInfo(infop);
 
     	//inf.setPreferredSize(new Dimension(200,200));
-    	infop.add(inf);
-    	infop.add(inf2);
-
 
     	topp.add(picturep);
     	topp.add(infop);
 
     	bottomp = new JPanel();
-    	bottomp.setLayout(new BoxLayout(bottomp,BoxLayout.Y_AXIS));   	    	
+		bottomp.setBorder(BorderFactory.createLineBorder(Color.black));
+    	bottomp.setLayout(new BoxLayout(bottomp,BoxLayout.Y_AXIS));   	
+    	bottomp.setPreferredSize(new Dimension(800, 400));
     	
+    	
+    	genNewsFeed(bottomp);
+
     	backgroundp.add(topp);
     	backgroundp.add(bottomp);
-		
+    	JButton removeme = new JButton("helloooooooo");		
 		
         Container contentPane = getContentPane();
         
@@ -68,8 +76,78 @@ public class DashBoard extends Screen {
 		MakeScreen();
 		
 	}
-	
-	
+	public static void genInfo(Container pane) {
+        if (RIGHT_TO_LEFT) {
+            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        }
+
+        JLabel label;
+        pane.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        if (shouldFill) {
+            c.fill = GridBagConstraints.HORIZONTAL;
+        }
+        
+        label = new JLabel("Name: " + Main.username);
+        label.setFont(new Font(label.getFont().getName(), Font.PLAIN, FONT_SIZE1));        
+        c.gridx = 0;
+        c.gridy = 0;
+        pane.add(label, c);
+                   
+        label = new JLabel("School: " + "Concord High");
+        label.setFont(new Font(label.getFont().getName(), Font.PLAIN, FONT_SIZE3));        
+        c.gridx = 0;
+        c.gridy = 1;
+        pane.add(label, c);
+                
+        JProgressBar progressbar = new JProgressBar();
+        progressbar.setValue(40);
+        progressbar.setToolTipText("Progress");
+        progressbar.setPreferredSize(new Dimension(progressbar.getParent().WIDTH, 30));
+        c.gridx = 0;
+        c.gridy = 2;
+        pane.add(progressbar, c);                
+        
+    }
+	public static void genNewsFeed(Container pane) {
+        if (RIGHT_TO_LEFT) {
+            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        }
+
+        JLabel label;
+        pane.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        if (shouldFill) {
+            c.fill = GridBagConstraints.HORIZONTAL;
+        }
+        
+        label = new JLabel("Today ... \t FASFA Due ");
+        label.setFont(new Font(label.getFont().getName(), Font.PLAIN, FONT_SIZE1));        
+        c.gridx = 0;
+        c.gridy = 0;
+        pane.add(label, c);
+                   
+        label = new JLabel("Tomorrow ... \t Practice for SATs");
+        label.setFont(new Font(label.getFont().getName(), Font.PLAIN, FONT_SIZE3));        
+        c.gridx = 0;
+        c.gridy = 1;
+        pane.add(label, c);
+                
+        label = new JLabel("Soon ... \t University of Delaware application due");
+        label.setFont(new Font(label.getFont().getName(), Font.PLAIN, FONT_SIZE3));        
+        c.gridx = 0;
+        c.gridy = 2;
+        pane.add(label, c);                
+        
+    }
+	private static void removeListeners(JCheckBox checkbox) {
+	    	MouseListener[] m1 = (MouseListener[])checkbox.getListeners(MouseListener.class);
+	    	for(int i = 0; i<m1.length; i++)
+	    		checkbox.removeMouseListener(m1[i]);
+	    	InputMap im = checkbox.getInputMap();
+	    	im.put(KeyStroke.getKeyStroke("SPACE"), "none");
+	    	im.put(KeyStroke.getKeyStroke("released SPACE"), "none");
+	}
 	
 	//makes the screen with background panel, then other panels layered
 	public void MakeScreen(){
