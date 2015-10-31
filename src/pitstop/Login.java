@@ -9,7 +9,7 @@ import java.awt.event.*;
 public class Login extends Screen {
 
 	//Class Declarations
-	JTextField jtfText1, jtfUneditableText;
+	JTextField jtfText1;
 	String disp = "";
 	TextHandler handler = null;
 	//Constructor
@@ -18,13 +18,13 @@ public class Login extends Screen {
 		Container container = getContentPane();
 		container.setLayout(new FlowLayout());
 		jtfText1 = new JTextField(10);
-		jtfUneditableText = new JTextField("Uneditable text field", 20);
-		jtfUneditableText.setEditable(false);
+		
+		
 		container.add(jtfText1);
-		container.add(jtfUneditableText);
+		
 		handler = new TextHandler();
 		jtfText1.addActionListener(handler);
-		jtfUneditableText.addActionListener(handler);
+		
 		setSize(400, 600);
 		setVisible(false);
 	}
@@ -35,10 +35,7 @@ public class Login extends Screen {
 			if (e.getSource() == jtfText1) {
 				disp = "text1 : " + e.getActionCommand();
 				switchto(new MainFrame());
-			} else if (e.getSource() == jtfUneditableText) {
-				disp = "text3 : " + e.getActionCommand();
-				
-			}
+			} 
 			JOptionPane.showMessageDialog(null, disp);
 		}
 	}
