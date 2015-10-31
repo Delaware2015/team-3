@@ -1,14 +1,16 @@
 package pitstop;
 
-import java.awt.Cursor;
+import java.awt.*;
+import javax.swing.*;
+
 import java.awt.Dimension;
-import java.awt.Insets;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+
 import javax.swing.AbstractButton;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,11 +21,13 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
+
 public class CollegeFinder extends JPanel implements ActionListener{
 	
 	private JButton go;
 	private JTextPane textPane;
 	private String[] searchText = {"Look up a College:"};
+	private StyledDocument doc;
 	
 	
 	public CollegeFinder()
@@ -54,12 +58,11 @@ public class CollegeFinder extends JPanel implements ActionListener{
 	private void makeTextPane()
 	{	
 
-		String[] initStyles =
-	        {};
+		String[] initStyles = {};
 
 		textPane = new JTextPane();
 		textPane.setPreferredSize(new Dimension(200, 20));
-		StyledDocument doc = textPane.getStyledDocument();
+		doc = textPane.getStyledDocument();
 		addStylesToDocument(doc);
 		
 		try {
@@ -95,15 +98,13 @@ public class CollegeFinder extends JPanel implements ActionListener{
        
     }
 	
-	private static void createAndShowGUI() {
-
+	private static void createAndShowGUI() throws Exception {
+		
         JFrame frame = new JFrame("");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         CollegeFinder newContentPane = new CollegeFinder();
-        newContentPane.setOpaque(true);
-        frame.setContentPane(newContentPane);
-
+        frame.add(newContentPane);
         frame.pack();
         frame.setVisible(true);
     }
@@ -111,7 +112,12 @@ public class CollegeFinder extends JPanel implements ActionListener{
 	public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                createAndShowGUI(); 
+                try {
+					createAndShowGUI();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
             }
         });
     }
@@ -124,5 +130,6 @@ public class CollegeFinder extends JPanel implements ActionListener{
 		}
 		
 	}
+	
 
 }
