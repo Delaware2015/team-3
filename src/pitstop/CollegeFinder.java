@@ -55,9 +55,13 @@ public class CollegeFinder extends Screen{
 		EnterButton.setAlignmentY(CENTER_ALIGNMENT);
 
 		JPanel dividor = new JPanel();
-		dividor.add(label);
-		dividor.add(collegeinput);
-		dividor.add(EnterButton);
+		dividor.setLayout(new BoxLayout(dividor, BoxLayout.Y_AXIS));
+		JPanel dividorTop = new JPanel();
+		dividorTop.add(label);
+		dividorTop.add(collegeinput);
+		dividorTop.add(EnterButton);
+		dividor.add(dividorTop);
+		//dividor.add(EnterButton);
 		dividor.add(iname);
 		dividor.add(isize);
 		dividor.add(ideadline);
