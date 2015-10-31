@@ -338,7 +338,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 Intent i = new Intent(LoginActivity.this, main.class);
                 startActivity(i);
-                //setContentView(R.layout.activity_main);
 
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
