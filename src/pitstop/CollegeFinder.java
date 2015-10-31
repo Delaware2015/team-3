@@ -13,7 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import buttons.CalendarButton;
 import buttons.CollegeFinderButton;
+import buttons.MileStoneButton;
 
 
 public class CollegeFinder extends Screen{
@@ -86,11 +88,11 @@ public class CollegeFinder extends Screen{
 
         JPanel navi1 = new JPanel();
         JPanel navi2 = new JPanel();
-        JButton Milestones = new JButton("Milestones");
+        JButton Milestones = new MileStoneButton("Milestones");
         JButton Colleges = new CollegeFinderButton("Colleges");
         JButton Profile = new JButton("Profile");
         navi1.add(Profile);
-        navi1.add(new JButton("Calander"));
+        navi1.add(new CalendarButton("Calander"));
         navi2.add(new JButton("Forums"));
         navi2.add(Milestones);
         navi2.add(Colleges);

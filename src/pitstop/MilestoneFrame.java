@@ -20,7 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
+import buttons.CalendarButton;
 import buttons.CollegeFinderButton;
+import buttons.MileStoneButton;
 
 public class MilestoneFrame extends Screen {
 	final static boolean shouldFill = true;
@@ -49,8 +51,8 @@ public class MilestoneFrame extends Screen {
         JButton colleges = new CollegeFinderButton("Colleges");
         navi1.add(profile);
         navi1.add(new JButton("Forums"));
-        navi2.add(new JButton("Calander"));
-        navi2.add(new JButton("Milestones"));
+        navi2.add(new CalendarButton("Calander"));
+        navi2.add(new MileStoneButton("Milestones"));
         navi2.add(colleges);
      
         
