@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
@@ -30,9 +31,10 @@ public class Login extends Screen {
     }
 
     public final void initUI() {
-    	getContentPane().setLayout(new FlowLayout());
+    	//getContentPane().setLayout(new FlowLayout());
         setLocationRelativeTo(null);
         JPanel panel = new JPanel();
+        panel.setPreferredSize(new Dimension(Main.WIDTH, 400));
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
       
        
@@ -41,30 +43,59 @@ public class Login extends Screen {
        
         
         JLabel username = new JLabel();
-        username.setText("UserName");
+        username.setText("Username");
       
         
         JLabel password = new JLabel();
-        password.setText("PassWord");
+        password.setText("Password");
         
-        final JTextField usernameinput = new JTextField(space);
-        final JTextField passwordinput = new JTextField(space);
+        final JTextField usernameinput = new JTextField();
+        usernameinput.setPreferredSize(new Dimension(85,20));
+        final JPasswordField passwordinput = new JPasswordField();
+        passwordinput.setPreferredSize(new Dimension(85,20));
+        
+
         
         JButton EnterButton = new JButton("Enter");
         EnterButton.setAlignmentX(CENTER_ALIGNMENT);
         EnterButton.setAlignmentY(CENTER_ALIGNMENT);
       
         
+        JPanel dividor = new JPanel();
+        //dividor.setPreferredSize(new Dimension(Main.WIDTH, 400));
+              
         
-        panel.add(username);
-        panel.add(usernameinput);
-        panel.add(password);
-        panel.add(passwordinput);
-        panel.add(EnterButton);
+        dividor.add(username);
+        dividor.add(usernameinput);
+        dividor.add(password);
+        dividor.add(passwordinput);
+        dividor.add(EnterButton);
         
+        JPanel spacer1 = new JPanel();
+        spacer1.setPreferredSize(new Dimension(400,200));
+        JPanel spacer2 = new JPanel();
+        spacer2.setPreferredSize(new Dimension(400,200));
+
+        panel.add(spacer1);
+        panel.add(dividor);
+        panel.add(spacer2);
+        
+        final JPanel bottom = new JPanel();
+        bottom.setLayout(new FlowLayout());
+
+        
+        JButton test = new JButton("Milestones");
+        
+        bottom.add(test);
+        bottom.add(new JButton("College Finder"));
+        bottom.add(new JButton("Calendar"));
+        bottom.setVisible(false);
+        
+       // test.setPreferredSize(new Dimension(600, 60));
+        panel.add(bottom);
         Container contentPane = getContentPane();
       
-        contentPane.add(panel, BorderLayout.CENTER);
+        contentPane.add(panel);
         
        
       
@@ -74,7 +105,8 @@ public class Login extends Screen {
     
 
 
-      
+        setSize(400, 600);
+        setLocationRelativeTo(null);
     
 
         setTitle("Login");
@@ -83,10 +115,10 @@ public class Login extends Screen {
         EnterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                String username = usernameinput.getText();
-                String password = passwordinput.getText();
-                System.out.println(username);
-                System.out.println(password);
+                Main.username = usernameinput.getText();
+                Main.password = passwordinput.getText();
+           
+ //             switchScreen(new MainScreen()));
             }
         });
 
