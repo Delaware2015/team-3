@@ -3,8 +3,9 @@ package pitstop;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		MainFrame login = new MainFrame();
+		login.main(args);
+				
 	}
 
 }
