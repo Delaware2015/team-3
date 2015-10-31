@@ -14,6 +14,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.content.Intent;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -49,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
+            "foo@bar.com:foobar"
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -334,7 +335,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                 //start the next activity
-                setContentView(R.layout.activity_main);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                Intent i = new Intent(LoginActivity.this, main.class);
+                startActivity(i);
+                //setContentView(R.layout.activity_main);
+
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
