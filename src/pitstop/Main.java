@@ -7,6 +7,8 @@ public class Main {
 	public static final String TITLE = "Pitstop";
 
 	static Screen currentscreen = new Login();
+	static String password;
+	static String username;
 
 	public static void main(String[] args) {
 		currentscreen.setVisible(true);
