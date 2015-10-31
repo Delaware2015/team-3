@@ -1,12 +1,13 @@
 package pitstop;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
 public abstract class Screen extends JFrame{
 	
 	public Screen(String text)
 	{
 		super(text);
+		setSize(Main.WIDTH,Main.HEIGHT);
 	}
 	
 	public Screen(){
