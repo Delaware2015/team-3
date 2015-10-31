@@ -7,6 +7,7 @@ public abstract class Screen extends JFrame{
 	public Screen()
 	{
 		super(Main.TITLE);
+		setResizable(false);
 		setSize(Main.WIDTH,Main.HEIGHT);
 	}
 	

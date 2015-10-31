@@ -12,7 +12,7 @@ public class MilestoneFrame extends Screen {
     final static boolean RIGHT_TO_LEFT = false;
     
     final static int FONT_SIZE1 = 60;
-    final static int FONT_SIZE2 = 15;
+    final static int FONT_SIZE2 = 17;
     final static int FONT_SIZE3 = 35;
 
 
@@ -37,7 +37,10 @@ public class MilestoneFrame extends Screen {
         
         background.add(panel);
         background.add(navi1);
-       background.add(navi2);
+        background.add(navi2);
+        JPanel space = new JPanel();
+        space.setPreferredSize(new Dimension(Main.WIDTH,20));
+        background.add(space);
         this.getContentPane().add(background);
     }
     public static void addComponentsToPane(Container pane) {
