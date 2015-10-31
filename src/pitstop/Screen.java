@@ -4,16 +4,11 @@ import javax.swing.JFrame;
 
 public abstract class Screen extends JFrame{
 	
-	public Screen(String text)
+	public Screen()
 	{
-		super(text);
+		super(Main.TITLE);
 		setSize(Main.WIDTH,Main.HEIGHT);
 	}
-	
-	public Screen(){
-		
-	}
-	
 	
 	public void switchto(Screen newscreen){
 		setVisible(false);
