@@ -3,6 +3,8 @@ package pitstop;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractButton;
@@ -17,19 +19,26 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-public class CollegeFinder extends JPanel{
+public class CollegeFinder extends JPanel implements ActionListener{
 	
 	private JButton go;
 	private JTextPane textPane;
+	private String[] searchText = {"Look up a College:"};
 	
 	
 	public CollegeFinder()
 	{
+		
 		makeButtons();
 		makeTextPane();
 		add(textPane);
 		add(go);
 		
+	}
+	
+	public void setSearchText(String s)
+	{
+		searchText = s.split("");
 	}
 	
 	private void makeButtons()
@@ -38,15 +47,12 @@ public class CollegeFinder extends JPanel{
 	    go.setVerticalTextPosition(AbstractButton.CENTER);
 	    go.setHorizontalTextPosition(AbstractButton.LEADING);
 	    go.setMnemonic(KeyEvent.VK_D);
-	    go.setActionCommand("disable");
+	    go.setActionCommand("go");
+	    go.addActionListener(this);
 	}
 	
 	private void makeTextPane()
-	{
-		String[] initString =
-	        {"Look up a College:"};
-		
-		
+	{	
 
 		String[] initStyles =
 	        {};
@@ -57,8 +63,8 @@ public class CollegeFinder extends JPanel{
 		addStylesToDocument(doc);
 		
 		try {
-			for (int i=0; i < initString.length; i++) {
-				doc.insertString(doc.getLength(), initString[i], doc.getStyle("regular"));
+			for (int i=0; i < searchText.length; i++) {
+				doc.insertString(doc.getLength(), searchText[i], doc.getStyle("regular"));
 			}
 		} catch (BadLocationException ble) {
 			System.err.println("Couldn't insert initial text into text pane.");
@@ -109,5 +115,14 @@ public class CollegeFinder extends JPanel{
             }
         });
     }
+
+	public void actionPerformed(ActionEvent arg0) {
+		if("go".equals(arg0.getActionCommand()))
+		{
+			//setSearchText("Look for a College:");
+			go.setEnabled(false);
+		}
+		
+	}
 
 }

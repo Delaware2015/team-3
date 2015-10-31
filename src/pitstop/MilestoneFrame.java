@@ -6,7 +6,7 @@ public class MilestoneFrame extends Screen {
 	private JPanel mainPanel;
 	
 	public MilestoneFrame(String x) {
-		super(x);
+		super();
 
 
 		mainPanel = new JPanel();

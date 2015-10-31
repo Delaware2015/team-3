@@ -14,7 +14,7 @@ public class Login extends Screen {
 	TextHandler handler = null;
 	//Constructor
 	public Login() {
-		super("TextField Test Demo");
+		super();
 		Container container = getContentPane();
 		container.setLayout(new FlowLayout());
 		jtfText1 = new JTextField(10);
