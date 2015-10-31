@@ -118,7 +118,7 @@ public class Login extends Screen {
                 Main.username = usernameinput.getText();
                 Main.password = passwordinput.getText();
            
- //             switchScreen(new MainScreen()));
+                switchto(new MilestoneFrame());
             }
         });
 
