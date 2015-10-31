@@ -3,6 +3,7 @@ package pitstop;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -33,7 +34,7 @@ public class Login extends Screen {
 
     public final void initUI() {
     	//getContentPane().setLayout(new FlowLayout());
-        JPanel panel = new JPanel();
+        BackGround panel = new BackGround();
         panel.setPreferredSize(new Dimension(Main.WIDTH, 400));
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
       
@@ -62,6 +63,7 @@ public class Login extends Screen {
       
         
         JPanel dividor = new JPanel();
+        dividor.setBackground(Color.WHITE);
         //dividor.setPreferredSize(new Dimension(Main.WIDTH, 400));
               
         
@@ -71,9 +73,10 @@ public class Login extends Screen {
         dividor.add(passwordinput);
         dividor.add(EnterButton);
         
-        JPanel spacer1 = new JPanel();
+        BackGround spacer1 = new BackGround();
         spacer1.setPreferredSize(new Dimension(400,200));
-        JPanel spacer2 = new JPanel();
+        BackGroundBottom spacer2 = new BackGroundBottom();
+        spacer2.setBackground(Color.WHITE);
         spacer2.setPreferredSize(new Dimension(400,200));
 
         panel.add(spacer1);
@@ -94,7 +97,7 @@ public class Login extends Screen {
        // test.setPreferredSize(new Dimension(600, 60));
         panel.add(bottom);
         Container contentPane = getContentPane();
-      
+        
         contentPane.add(panel);
         
        
