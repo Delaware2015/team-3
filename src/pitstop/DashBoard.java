@@ -3,7 +3,6 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,16 +10,48 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 
 public class DashBoard extends Screen {
 		
+	JPanel backgroundp;
+	JPanel infop;
+	JPanel bottomp;
+	JPanel topp;
+	JPanel picturep;
 		
 	//constructor
 	public DashBoard() {
 		super();
-		initialize();
 		
+		backgroundp = new JPanel();
+    	backgroundp.setLayout(new BoxLayout(backgroundp,BoxLayout.Y_AXIS));
+    		
+    	//top half
+    	topp = new JPanel();
+    	topp.setLayout(new BoxLayout(topp,BoxLayout.X_AXIS));
+    	picturep = new JPanel();
+    	JButton image = new JButton("picture here");
+    	image.setPreferredSize(new Dimension(175,175));
+    	picturep.add(image);
+    	infop = new JPanel();
+    	JLabel inf = new JLabel();
+    	inf.setPreferredSize(new Dimension(200,200));
+    	infop.add(inf);
+
+    	topp.add(picturep);
+    	topp.add(infop);
+
+    	bottomp = new JPanel();
+    	bottomp.setLayout(new BoxLayout(bottomp,BoxLayout.Y_AXIS));   	    	
+    	
+    	backgroundp.add(topp);
+    	backgroundp.add(bottomp);
+		
+		
+        Container contentPane = getContentPane();
+        
+        contentPane.add(backgroundp);
+		//initialize();
 	}
 	
 	//initializes all methods
@@ -81,4 +112,9 @@ public class DashBoard extends Screen {
         contentPane.add(Panel);
 	} 
 
+	public static void main(String args[]){
+		DashBoard d = new DashBoard();
+		d.setVisible(true);
+		
+	}
 }
