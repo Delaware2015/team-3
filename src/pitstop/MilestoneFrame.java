@@ -52,8 +52,8 @@ public class MilestoneFrame extends Screen {
         JButton profile = new ProfileButton("Profile");
         JButton colleges = new CollegeFinderButton("Colleges");
         navi1.add(profile);
-        navi1.add(new ForumButton("Forums"));
-        navi2.add(new CalendarButton("Calander"));
+        navi2.add(new ForumButton("Forums"));
+        navi1.add(new CalendarButton("Calander"));
         navi2.add(new MileStoneButton("Milestones"));
         navi2.add(colleges);
      
